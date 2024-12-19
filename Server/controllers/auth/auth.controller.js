@@ -1,11 +1,11 @@
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const User = require("../models/user.model");
+const User = require("../../models/user.model");
 require("dotenv").config();
 
 // Controller for User Registration
 const registerUser = async (req, res) => {
-  const { userName, email, password } = req.body;
+  const { username, email, password } = req.body;
 
   try {
     const checkUser = await User.findOne({ email });
@@ -17,9 +17,9 @@ const registerUser = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 12);
     const newUser = new User({
-      userName,
+      username,
       email,
-      hashedPassword,
+      password: hashedPassword,
     });
 
     await newUser.save();
@@ -65,6 +65,7 @@ const loginUser = async (req, res) => {
         id: checkUser._id,
         role: checkUser.role,
         email: checkUser.email,
+        username: checkUser.username,
       },
       process.env.JWT_SECRET_KEY,
       { expiresIn: "60m" }
@@ -77,6 +78,7 @@ const loginUser = async (req, res) => {
         email: checkUser.email,
         role: checkUser.role,
         id: checkUser._id,
+        username: checkUser.username,
       },
     });
   } catch (err) {
@@ -96,4 +98,15 @@ const logoutUser = (req, res) => {
   });
 };
 
-module.exports = { registerUser, loginUser, logoutUser };
+// User Authorization
+const checkAuth = (req, res) => {
+  const user = req.user;
+
+  res.status(200).json({
+    success: true,
+    message: "Authenticated User!",
+    user,
+  });
+};
+
+module.exports = { registerUser, loginUser, logoutUser, checkAuth };

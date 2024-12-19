@@ -3,6 +3,7 @@ const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const connectDB = require("./config/db.config");
 const authRouter = require("./routes/auth/auth.routes");
+const adminProductsRouter = require("./routes/admin/products.routes");
 require("dotenv").config();
 
 connectDB();
@@ -29,6 +30,7 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use("/api/auth", authRouter);
+app.use("/api/admin/products", adminProductsRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
