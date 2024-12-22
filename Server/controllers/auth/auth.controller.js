@@ -54,7 +54,7 @@ const loginUser = async (req, res) => {
       checkUser.password
     );
     if (!checkPasswordMatch) {
-      return res.json({
+      return res.status(403).json({
         success: false,
         message: "Incorrect password! Please try again.",
       });
