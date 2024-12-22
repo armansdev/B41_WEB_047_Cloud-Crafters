@@ -15,7 +15,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: "https://famous-gingersnap-630c1f.netlify.app/",
+    origin: "https://admirable-scone-abea6f.netlify.app/register",
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
       "Content-Type",
