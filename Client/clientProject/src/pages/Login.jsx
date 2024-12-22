@@ -1,13 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Footer, Navbar } from "../components";
-import { useNavigate } from 'react-router-dom';
-
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [form, setFormData] = React.useState({
     email: "",
-    password: ""
+    password: "",
   });
   const navigate = useNavigate();
 
@@ -23,27 +22,30 @@ const Login = () => {
 
     try {
       // Replace 'API_LINK' with your actual API endpoint
-      const response = await fetch('http://localhost:5000/api/auth/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(form)
-      });
+      const response = await fetch(
+        "https://b41-web-047-cloud-crafters.onrender.com/api/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(form),
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();
-        console.log('Login successful:', data);
-        alert('Login successful!');
-        navigate('/home');
+        console.log("Login successful:", data);
+        alert("Login successful!");
+        navigate("/home");
       } else {
         const errorData = await response.json();
-        console.error('Login failed:', errorData);
-        alert('Invalid credentials. Please try again.');
+        console.error("Login failed:", errorData);
+        alert("Invalid credentials. Please try again.");
       }
     } catch (error) {
-      console.error('Error during login:', error);
-      alert('An error occurred. Please try again later.',error);
+      console.error("Error during login:", error);
+      alert("An error occurred. Please try again later.", error);
     }
   }
 
@@ -82,7 +84,13 @@ const Login = () => {
               </div>
               <div className="my-3">
                 <p>
-                  New Here? <Link to="/register" className="text-decoration-underline text-info">Register</Link>
+                  New Here?{" "}
+                  <Link
+                    to="/register"
+                    className="text-decoration-underline text-info"
+                  >
+                    Register
+                  </Link>
                 </p>
               </div>
               <div className="text-center">
