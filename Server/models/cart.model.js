@@ -1,5 +1,5 @@
 const { Schema, model } = require("mongoose");
-var User=require("./user.model")
+const User = require("./user.model");
 
 const cartSchema = new Schema(
   {
