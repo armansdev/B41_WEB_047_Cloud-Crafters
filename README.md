@@ -118,7 +118,7 @@ npm start
 
 1. Start the backend server to serve API endpoints.
 2. Start the frontend server to serve the user interface.
-3. Access the application at `http://localhost:3000` (default port).
+3. Access the application at `https://famous-gingersnap-630c1f.netlify.app/`
 
 ### Example Usage
 
