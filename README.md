@@ -12,8 +12,8 @@ Fullstack
 
 ## Deployed App
 
-- **Frontend**: https://e-market-b41-web047.netlify.app/
-- **Backend**: https://e-market-b41-web047.netlify.app/
+- **Frontend**: https://admirable-scone-abea6f.netlify.app/
+- **Backend**: https://b41-web-047-cloud-crafters.onrender.com
 - **Database**: https://cloud.mongodb.com/v2/6762f0c7124ee8008b9c895b#/metrics/replicaSet/6762f1bebf54e139248d2eb2/explorer/test
 
 ## Directory Structure
